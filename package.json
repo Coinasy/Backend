@@ -1,0 +1,37 @@
+{
+  "name": "coinasy",
+  "version": "1.0.0",
+  "description": "Fantasy Cryptocurrency",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js --exec babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Coinasy/Backend.git"
+  },
+  "author": "Serey Morm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Coinasy/Backend/issues"
+  },
+  "homepage": "https://github.com/Coinasy/Backend#readme",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "install": "^0.10.1",
+    "jsonwebtoken": "^8.0.1",
+    "mongoose": "^4.11.11",
+    "node-bittrex-api": "^0.8.1",
+    "npm": "^5.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "nodemon": "^1.14.6"
+  }
+}
