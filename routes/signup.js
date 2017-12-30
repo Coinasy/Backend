@@ -28,7 +28,6 @@ router.post('/', (req, res) => {
         lastname,
         email,
       }
-      console.log(newUser)
       User.create(newUser, (err, user) => {
         if(err)
           res.status(401).send(err)
