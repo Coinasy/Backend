@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
       console.log(newUser)
       User.create(newUser, (err, user) => {
         if(err)
-          res.status(401).send(err.toString())
+          res.status(401).send(err)
         else {
           const token = jwt.sign({
             id: user.id,

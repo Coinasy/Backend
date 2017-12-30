@@ -24,14 +24,12 @@ var userSchema = new mongoose.Schema({ // What each user will look like
     type: String,
     unique: [true, 'username already taken'],
     required: [true, 'last name is require'],
-    minlength: [6, 'username min length is 2'],
+    minlength: [6, 'username min length is 6'],
     maxlength: [40, 'username max length is 40']
   },
   password: {
     type: String,
-    require: [true, 'password is require'],
-    minlength: [8, 'first name min length is 8'],
-    maxlength: [40, 'first name max length is 40']
+    require: [true, 'password is require']
   },
   facebook_id: String,
   google_id: String,
