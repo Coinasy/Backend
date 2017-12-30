@@ -37,7 +37,8 @@ router.get('/all', (req, res) => {
 
 
 
-router.post('/', (req, res) => {
+router.get('/', (req, res) => {
+  res.redirect('all')
 })
 
 module.exports = router

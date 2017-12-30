@@ -10,6 +10,7 @@ dotenv.config()
 const signup  = require('./routes/signup')
 const login   = require('./routes/login')
 const bittrex  = require('./routes/bittrex')
+const marketcap = require('./routes/marketcap')
 
 let app = express()
 const PORT = process.env.PORT || '4000'
@@ -34,6 +35,7 @@ app.use((req, res, next) => {
 app.use('/api/signup', signup)
 app.use('/api/login', login)
 app.use('/api/bittrex', bittrex)
+app.use('/api/marketcap', marketcap)
 
 app.get('/', (req, res) => res.send('Reached root path of API'))
 
