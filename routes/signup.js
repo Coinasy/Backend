@@ -17,9 +17,9 @@ router.post('/', (req, res) => {
   User.findOne({username}, (err, user) => {
     if(err)
       res.send({ error: err })
-    else if(user) {
-      res.send({ error: 'Username already exists'})
-    }
+    // else if(user) {
+    //   res.send({ error: 'Username already exists'})
+    // }
     else {
       const newUser = {
         username,
@@ -28,9 +28,10 @@ router.post('/', (req, res) => {
         lastname,
         email,
       }
+      console.log(newUser)
       User.create(newUser, (err, user) => {
         if(err)
-          res.status(401).send({ error: err})
+          res.status(401).send(err.toString())
         else {
           const token = jwt.sign({
             id: user.id,
