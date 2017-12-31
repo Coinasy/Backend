@@ -15,6 +15,12 @@ const marketcap = require('./routes/marketcap')
 let app = express()
 const PORT = process.env.PORT || '4000'
 
+var server = require('http').Server(app)
+var io = require('socket.io')(server)
+require('./socket/market')(io)
+
+server.listen(8000)
+
 mongoose.connect(process.env.MONGOOSE_CONNECT, { useMongoClient: true })
 mongoose.connection.on('error', err => 
   console.error(`Failed to connect to DB ${err.message}`)
