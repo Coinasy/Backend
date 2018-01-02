@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
+
 // Load Configs
 dotenv.config()
 
@@ -11,6 +12,7 @@ const signup  = require('./routes/signup')
 const login   = require('./routes/login')
 const bittrex  = require('./routes/bittrex')
 const marketcap = require('./routes/marketcap')
+const pool = require('./routes/pool')
 
 let app = express()
 const PORT = process.env.PORT || '4000'
@@ -42,6 +44,8 @@ app.use('/api/signup', signup)
 app.use('/api/login', login)
 app.use('/api/bittrex', bittrex)
 app.use('/api/marketcap', marketcap)
+
+app.use('/pool', pool)
 
 app.get('/', (req, res) => res.send('Reached root path of API'))
 

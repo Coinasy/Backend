@@ -11,7 +11,7 @@ router.get('/', (req, res) => res.send('GET: /api/login'))
 
 router.post('/', (req, res) => {
   const { username, password } = req.body
-
+  
   User.findOne({ username }, (err, user) => {
     if(err)
       res.send({ error: err })
