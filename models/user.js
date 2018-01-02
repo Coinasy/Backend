@@ -24,7 +24,7 @@ var userSchema = new mongoose.Schema({ // What each user will look like
     type: String,
     unique: [true, 'username already taken'],
     required: [true, 'last name is require'],
-    minlength: [6, 'username min length is 6'],
+    minlength: [5, 'username min length is 5'],
     maxlength: [40, 'username max length is 40']
   },
   password: {

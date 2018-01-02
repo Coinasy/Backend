@@ -10,9 +10,9 @@ const auth = require('../validations/authenticate')
 const router = express.Router()
 
 router.get('/' , (req, res) => {
-    var data = Pool.find()
-    console.log(data)
-    res.send(data.stringify)
+    Pool.find({}, (err, data) => {
+        res.send(data)
+    })
 })
 
 router.post('/create', (req, res) => {
@@ -20,17 +20,16 @@ router.post('/create', (req, res) => {
     var today = Date.now();
     // check authentication bearer
     var decodedToken = auth.authenticate(req, res)
-    console.log(decodedToken.id)
 
     const newPool = {
         name,
         size,
         entries,
         fee,
-        //will change starting and end date later
+        //TODO: will change starting and end date later
         startDate: today,
         endDate: today,
-        // insert user objectID of the person login
+        // insert user objectID of the user that is creating
         participant: [
             decodedToken.id
         ]
@@ -42,7 +41,19 @@ router.post('/create', (req, res) => {
         else {
           res.send(pool)
         }
-    })   
+    }) 
+})
+
+router.post('/join/:id', (req, res) => {
+    var decodedToken = auth.authenticate(req, res)
+    // only push to array if the id is unique
+    Pool.findOneAndUpdate({_id: req.params.id}, {$addToSet: { participant: decodedToken.id}}, err => {
+        if(err)
+          res.status(401).send(err)
+        else {
+          res.json({success: true})
+        }
+    })
 })
 
 module.exports = router
